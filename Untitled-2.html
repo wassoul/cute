@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صهبوببييي هل تحبني؟ 🎀</title>
+    <style>
+        body {
+            /* خلفية مليئة بهيلو كيتي */
+            background-color: #ffeef2;
+            background-image: url('https://i.pinimg.com/originals/de/82/53/de8253805370605928646f9064a7872c.png');
+            background-size: 200px;
+            background-repeat: repeat;
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 50px;
+            border: 8px solid #ff85a2;
+            box-shadow: 0 10px 0 #ff5c8a;
+            text-align: center;
+            position: relative;
+            max-width: 90%;
+        }
+
+        /* فيونكة هيلو كيتي فوق الصندوق */
+        .container::before {
+            content: '🎀';
+            font-size: 50px;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h1 {
+            color: #ff477e;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px #ffdae3;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px; /* مساحة لنمو الزر */
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.8rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        #yesBtn {
+            background-color: #76ff03; /* لون أخضر مثل الصورة */
+            color: #004d40;
+            box-shadow: 0 6px 0 #52b202;
+            z-index: 999;
+        }
+
+        #noBtn {
+            background-color: #ff1744; /* لون أحمر */
+            color: white;
+            box-shadow: 0 6px 0 #b2102f;
+        }
+
+        button:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0;
+        }
+
+        #result {
+            display: none;
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 50px;
+            border: 8px solid #ff85a2;
+        }
+
+        .batman-gif {
+            width: 300px;
+            border-radius: 20px;
+            border: 5px solid #ff85a2;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="quiz" class="container">
+
+        <h1>صهبوببييي هل تحبني؟</h1>
+        <div class="buttons">
+
+            <button id="yesBtn" onclick="showBatman()">نعم 🎀</button>
+            <button id="noBtn" onclick="growYes()">لا 💢</button>
+        </div>
+    </div>
+
+    <div id="result">
+        <h1 style="font-size: 2rem;">علابالي صهبوبي هيهييهيهيهيه! 😂🦇</h1>
+        <img src="https://media.giphy.com/media/l396BoOTIFem9xqQU/giphy.gif" class="batman-gif" alt="Batman Dancing">
+        <div style="margin-top: 20px; font-size: 40px;">🐱🎀💕</div>
+    </div>
+
+    <script>
+        let scale = 1;
+        let paddingVar = 15;
+
+        function growYes() {
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            
+            // تكبير الحجم بنسبة
+            scale += 0.4;
+            yesBtn.style.transform = `scale(${scale})`;
+            
+            // تغيير نص زر لا أحياناً للتمويه
+            const messages = ["لا", "متأكد؟", "فكر ثاني!", "ليش لا؟", "عيب!", "اضغط نعم!"];
+            noBtn.innerText = messages[Math.floor(Math.random() * messages.length)];
+
+            // إذا كبر جداً يختفي زر لا
+            if (scale > 8) {
+                noBtn.style.opacity = '0';
+                noBtn.style.pointerEvents = 'none';
+            }
+        }
+
+        function showBatman() {
+            document.getElementById('quiz').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            document.body.style.backgroundImage = "url('https://i.pinimg.com/originals/44/7b/06/447b065f49c0966f97b6933f7c46927a.gif')"; // خلفية احتفالية
+        }
+    </script>
+</body>
+</html>
